@@ -2,7 +2,7 @@ package models;
 
 public class User {
     private String email = System.getProperty("email");
-    private String password =System.getProperty("password");"QWERTY1998q";
+    private String password =System.getProperty("password");
 
     public User(){
     }

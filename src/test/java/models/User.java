@@ -1,8 +1,8 @@
 package models;
 
 public class User {
-    private String email = "victordyatel1998@yandex.by";
-    private String password ="QWERTY1998q";
+    private String email = System.getProperty("email");
+    private String password =System.getProperty("password");"QWERTY1998q";
 
     public User(){
     }

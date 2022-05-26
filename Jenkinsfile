@@ -21,7 +21,7 @@ pipeline {
             // Run Maven on a Unix agent.
 
             // To run Maven on a Windows agent, use
-            bat "mvn -Dmaven.test.failure.ignore=true -Dbrowser=chrome -Dsurefire.suiteXmlFiles=src/test/resources/testng-smoke.xml clean test"
+            bat "mvn -Dmaven.test.failure.ignore=true -Demail=${email} -Dpassword=${password} -Dbrowser=chrome -Dsurefire.suiteXmlFiles=src/test/resources/testng-smoke.xml clean test"
          }
 
          post {

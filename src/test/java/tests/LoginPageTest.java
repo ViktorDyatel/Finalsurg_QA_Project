@@ -16,7 +16,7 @@ public class LoginPageTest extends BaseTest {
     public void loginTest(){
         mainFinalSurgePage userProfilePage = loginPageService.login();
         String actualTextOfUserProfilePage = userProfilePage.getTextOfMainPageSection();
-        String expectedPageTexts = "Viw Calendar";
+        String expectedPageTexts = "View Calendar";
         Assert.assertEquals(actualTextOfUserProfilePage, expectedPageTexts, "The actual text of the page does not expected!");
     }
 

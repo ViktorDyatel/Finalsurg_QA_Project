@@ -2,26 +2,23 @@ package tests;
 
 import driver.DriverSingleton;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
-import pages.BasePage;
+import org.testng.annotations.*;
 import utils.TestListener;
+
 @Listeners(TestListener.class)
 public class BaseTest {
 
     protected WebDriver driver;
 
-    @BeforeTest
+    @BeforeClass
     public void startBrowser() {
-        driver = DriverSingleton.getDriver();
+        driver = DriverSingleton.getInstance().getDriver();
     }
 
-    @AfterTest
-    public void closeBrowser() {
-        DriverSingleton.closeDriver();
+    @AfterClass(alwaysRun = true)
+    public void stopBrowser() {DriverSingleton.getInstance().closeDriver();
     }
 }
+
 
 

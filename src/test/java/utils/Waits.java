@@ -1,16 +1,25 @@
 package utils;
+import driver.DriverSingleton;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.FluentWait;
 
-/*public class Waits {
-    private WebDriverWait wait;
+import java.time.Duration;
 
-    public Waits(WebDriver driver, int timeOut) {
-        wait = new WebDriverWait(driver, timeOut);
+public class Waits {
+
+    private final static int WAIT_TIMEOUT_SECONDS = 5;
+    private final static int TIMEOUT_SECONDS = 500;
+
+    private Waits() {
     }
 
-    public Waits(WebDriver driver) {
-        wait = new WebDriverWait(driver, ReadProperties.getInstance().getTimeOut());
+    public static void waitForElementToBeClickable(WebElement element) {
+        new FluentWait<>(DriverSingleton.getInstance().getDriver()).withTimeout(Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
+                .pollingEvery(Duration.ofMillis(TIMEOUT_SECONDS)).ignoring(NoSuchElementException.class)
+                .until((ExpectedCondition<Boolean>) webDriver -> element.isDisplayed() && element
+                        .isEnabled());
     }
-}*/
+}

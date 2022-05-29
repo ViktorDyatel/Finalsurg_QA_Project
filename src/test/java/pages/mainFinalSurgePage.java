@@ -8,7 +8,7 @@ public class mainFinalSurgePage extends BasePage {
     @FindBy(xpath = "//button[@class='btn btn-small btn-info ptip_s']")
     private WebElement buttonViewCalendarOfMainFinalSurgePage;
 
-    public String getDateOfMainPageSection(){
+    public String getTextOfMainPageSection(){
         return buttonViewCalendarOfMainFinalSurgePage.getText();
     }
 }

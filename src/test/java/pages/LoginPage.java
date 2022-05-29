@@ -3,6 +3,9 @@ package pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utils.AllureUtils;
+
+import static utils.Waits.waitForElementToBeClickable;
 
 public class LoginPage extends BasePage {
 
@@ -18,25 +21,27 @@ public class LoginPage extends BasePage {
     @Step("Opening Login Page")
     public LoginPage openPage(String url) {
         driver.get(url);
+
         return this;
     }
 
     @Step("Fill username Field")
     public LoginPage fillInEmail(String keyEmail) {
-        email.clear();
+        waitVisibilityOf(email).clear();
         email.sendKeys(keyEmail);
         return this;
     }
 
     @Step("Fill password Field")
     public LoginPage fillInPassword(String keyPassword) {
-        password.clear();
+        waitVisibilityOf(password).clear();
         password.sendKeys(keyPassword);
+
         return this;
     }
 
     @Step("Click button Login")
     public void clickLoginButton() {
-        loginButton.click();
+        waitElementToBeClickable(loginButton).click();
     }
 }

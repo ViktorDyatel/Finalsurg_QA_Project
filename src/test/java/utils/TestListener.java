@@ -1,16 +1,18 @@
 package utils;
 
+
 import driver.DriverSingleton;
 import io.qameta.allure.Attachment;
+import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import pages.BasePage;
 
-import java.util.concurrent.TimeUnit;
+
 
 public class TestListener implements ITestListener {
 
@@ -65,9 +67,9 @@ public class TestListener implements ITestListener {
                 .toSeconds(iTestResult.getEndMillis() - iTestResult.getStartMillis());
     }
 
-    @Attachment(value = "screenshot", type = "image/png")
+    @Attachment(value = "Last screen state", type = "image/png")
     private byte[] takeScreenshot() {
-        return ((TakesScreenshot) DriverSingleton.getDriver())
+        return ((TakesScreenshot) DriverSingleton.getInstance().getDriver())
                 .getScreenshotAs(OutputType.BYTES);
     }
 }

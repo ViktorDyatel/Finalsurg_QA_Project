@@ -10,7 +10,7 @@ public class LoginPageTest extends BaseTest {
 
     private LoginPageService loginPageService = new LoginPageService();
 
-    @Test(description = "Login")
+    @Test(description = "LoginPageTest")
     @Description("Fill all fields on page and login")
     public void loginTest(){
         mainFinalSurgePage userProfilePage = loginPageService.login();

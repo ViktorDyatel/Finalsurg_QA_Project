@@ -3,9 +3,7 @@ package pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.AllureUtils;
 
-import static utils.Waits.waitForElementToBeClickable;
 
 public class LoginPage extends BasePage {
 
@@ -15,8 +13,18 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//input[@id='login_password']")
     private WebElement password;
 
-    @FindBy(xpath = "//*[@id='login-validate']/div[@class='submit_sect']/button[@class='btn btn-beoro-1']")
+    @FindBy(xpath = "//*[@id='login-validate']/div[@class='submit_sect']//button[@class='btn btn-beoro-1']")
     private WebElement loginButton;
+
+
+    @FindBy(xpath = "//strong[@style='font-weight: bold;']")
+    private WebElement errorInvalidLoginCredentials;
+
+    public String getErrorTextOfLoginPage() {
+
+        return errorInvalidLoginCredentials.getText();
+
+    }
 
     @Step("Opening Login Page")
     public LoginPage openPage(String url) {
@@ -34,7 +42,7 @@ public class LoginPage extends BasePage {
 
     @Step("Fill password Field")
     public LoginPage fillInPassword(String keyPassword) {
-        waitVisibilityOf(password).clear();
+        password.clear();
         password.sendKeys(keyPassword);
 
         return this;
@@ -42,6 +50,7 @@ public class LoginPage extends BasePage {
 
     @Step("Click button Login")
     public void clickLoginButton() {
+
         waitElementToBeClickable(loginButton).click();
     }
 }

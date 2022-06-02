@@ -2,10 +2,17 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="Main Suite">
-    <test name="Tests">
+    <test name="LoginPageTest">
         <classes>
             <class name="tests.LoginPageTest"/>
         </classes>
     </test>
+
+    <test name="RegistrationPageTest">
+        <classes>
+            <class name="tests.RegistrationPageTest"/>
+        </classes>
+    </test>
+
 
 </suite>

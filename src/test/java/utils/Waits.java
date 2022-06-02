@@ -4,7 +4,9 @@ import driver.DriverSingleton;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -21,5 +23,9 @@ public class Waits {
                 .pollingEvery(Duration.ofMillis(TIMEOUT_SECONDS)).ignoring(NoSuchElementException.class)
                 .until((ExpectedCondition<Boolean>) webDriver -> element.isDisplayed() && element
                         .isEnabled());
+    }
+
+    public static void  waitVisibilityOf(WebElement element) {
+         new WebDriverWait(DriverSingleton.getInstance().getDriver(), Duration.ofSeconds(WAIT_TIMEOUT_SECONDS)).until(ExpectedConditions.visibilityOf(element));//вынести в waiters
     }
 }

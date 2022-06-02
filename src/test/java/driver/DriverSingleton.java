@@ -21,6 +21,7 @@ public class DriverSingleton {
     public static synchronized DriverSingleton getInstance() {
         if (instance.get() == null) {
             instance.set(new DriverSingleton());
+            System.out.println("я проинециалтзтровался");
         }
         return instance.get();
     }

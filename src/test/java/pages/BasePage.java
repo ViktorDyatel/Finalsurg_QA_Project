@@ -15,12 +15,13 @@ public abstract class BasePage {
     protected WebDriver driver = DriverSingleton.getInstance().getDriver();
     private final static int WAIT_TIMEOUT_SECONDS = 10;
 
-    protected BasePage() {
+    public BasePage() {
+
         PageFactory.initElements(driver, this);
     }
 
     protected WebElement waitVisibilityOf(WebElement element) {
-        return new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS)).until(ExpectedConditions.visibilityOf(element));
+        return new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS)).until(ExpectedConditions.visibilityOf(element));//вынести в waiters
     }
 
     protected WebElement waitElementToBeClickable(WebElement element) {

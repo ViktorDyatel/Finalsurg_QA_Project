@@ -10,7 +10,7 @@ import org.openqa.selenium.opera.OperaDriver;
 
 public class DriverSingleton {
 
-    private static  ThreadLocal<DriverSingleton> instance = new ThreadLocal<>();
+    private static ThreadLocal<DriverSingleton> instance = new ThreadLocal<>();
 
     private WebDriver driver;
 

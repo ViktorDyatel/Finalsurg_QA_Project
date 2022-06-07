@@ -1,11 +1,15 @@
 package pages;
 
 import io.qameta.allure.Step;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
 public class LoginPage extends BasePage {
+
+    private static final Logger logger = LogManager.getLogger(LoginPage.class);
 
     @FindBy(xpath = "//input[@id='login_name']")
     private WebElement email;
@@ -26,10 +30,10 @@ public class LoginPage extends BasePage {
 
     }
 
-    @Step("Opening Login Page")
+    @Step("Opening Login Page URl")
     public LoginPage openPage(String url) {
         driver.get(url);
-
+        logger.atInfo().log("Passing url and opening login page");
         return this;
     }
 
@@ -37,6 +41,7 @@ public class LoginPage extends BasePage {
     public LoginPage fillInEmail(String keyEmail) {
         waitVisibilityOf(email).clear();
         email.sendKeys(keyEmail);
+        logger.atInfo().log("User email input");
         return this;
     }
 
@@ -44,7 +49,7 @@ public class LoginPage extends BasePage {
     public LoginPage fillInPassword(String keyPassword) {
         password.clear();
         password.sendKeys(keyPassword);
-
+        logger.atInfo().log("User password input");
         return this;
     }
 
@@ -52,5 +57,6 @@ public class LoginPage extends BasePage {
     public void clickLoginButton() {
 
         waitElementToBeClickable(loginButton).click();
+        logger.atInfo().log("Pressing the login button after entering the email and password");
     }
 }

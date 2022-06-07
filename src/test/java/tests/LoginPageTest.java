@@ -4,13 +4,13 @@ import entities.EntitiesFactory;
 import io.qameta.allure.Description;
 import models.User;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.MainFinalSurgePage;
 import services.LoginPageService;
-import services.RegistrationPageService;
+
+
+import static utils.StringConstants.URL_LOGIN_PAGE;
 
 public class LoginPageTest extends BaseTest {
 
@@ -22,24 +22,35 @@ public class LoginPageTest extends BaseTest {
         loginPageService = new LoginPageService();
     }
 
-    @Test(description = "LoginPageTest")//, retryAnalyzer = Retry.class )//не работает retry
+    @Test(description = "LoginPageTestWithCorrectDate")
     @Description("Fill all fields on page and login")
     public void loginTest(){
         User user = EntitiesFactory.getUser();
-        MainFinalSurgePage userProfilePage = loginPageService.login(user.getEmail(), user.getPassword());
+        MainFinalSurgePage userProfilePage = loginPageService.login(user.getEmail(), user.getPassword(), URL_LOGIN_PAGE);
         String actualTextOfUserProfilePage = userProfilePage.getTextOfMainPageSection();
         String expectedPageTexts = "View Calendar";
-        Assert.assertEquals(actualTextOfUserProfilePage, expectedPageTexts, "The actual text of the page does not expected!");
+        Assert.assertEquals(actualTextOfUserProfilePage, expectedPageTexts, "User not logged in!");
+
     }
 
-    @Test(description = "LoginPageTestWithWrongPassword")//, retryAnalyzer = Retry.class )//не работает retry
+    @Test(description = "LoginPageTestWithWrongPassword")
     @Description("Fill all fields on page and login")
     public void loginWithWrongPassword(){
-        User user = EntitiesFactory.getIncorrectUser();
-        loginPageService.login(user.getEmail(), user.getPassword());
+        User user = EntitiesFactory.getUserWithIncorrectPassword();
+        loginPageService.login(user.getEmail(), user.getPassword(),URL_LOGIN_PAGE);
         String actualTextOfUserProfilePage = loginPageService.getErrorTextOfLoginPage();
         String expectedPageTexts = "Invalid login credentials. Please try again.";
-        Assert.assertEquals(actualTextOfUserProfilePage, expectedPageTexts, "The actual text of the page does not expected!");
+        Assert.assertEquals(actualTextOfUserProfilePage, expectedPageTexts, "User logged in with wrong password!");
+    }
+
+    @Test(description = "LoginPageTestWithWrongEmail")
+    @Description("Fill all fields on page and login")
+    public void loginWithWrongEmail(){
+        User user = EntitiesFactory.getUserWithIncorrectEmail();
+        loginPageService.login(user.getEmail(), user.getPassword(),URL_LOGIN_PAGE);
+        String actualTextOfUserProfilePage = loginPageService.getErrorTextOfLoginPage();
+        String expectedPageTexts = "Invalid login credentials. Please try again.";
+        Assert.assertEquals(actualTextOfUserProfilePage, expectedPageTexts, "User logged in with wrong email");
     }
 
 }

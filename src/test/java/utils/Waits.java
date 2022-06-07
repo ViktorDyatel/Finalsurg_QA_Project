@@ -1,4 +1,4 @@
-package utils;
+/*package utils;
 import driver.DriverSingleton;
 
 import org.openqa.selenium.NoSuchElementException;
@@ -28,4 +28,4 @@ public class Waits {
     public static void  waitVisibilityOf(WebElement element) {
          new WebDriverWait(DriverSingleton.getInstance().getDriver(), Duration.ofSeconds(WAIT_TIMEOUT_SECONDS)).until(ExpectedConditions.visibilityOf(element));//вынести в waiters
     }
-}
+}*/

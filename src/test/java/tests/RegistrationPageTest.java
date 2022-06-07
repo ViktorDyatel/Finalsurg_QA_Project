@@ -1,29 +1,35 @@
 package tests;
 
+import entities.EntitiesFactory;
 import io.qameta.allure.Description;
+import models.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import services.RegistrationPageService;
 
 public class RegistrationPageTest extends BaseTest{
 
-
+    public static final String URL_REGISTRATION_PAGE = "https://log.finalsurge.com/register.cshtml?page_redirect=%2f";
+    public static final String REGISTRATION_FIRST_NAME = "Viktor";
+    public static final String REGISTRATION_LAST_NAME = "Dyatel";
     private RegistrationPageService registrationPageService;
 
-    @BeforeClass
+    @BeforeTest
     public void setUp() {
 
         registrationPageService = new RegistrationPageService();
     }
 
     @Test(description = "RegistrationPageTest")
-    @Description("Fill all fields on page and login")
+    @Description("Filling in all fields and pressing the register button")
     public void registrationTest(){
-        registrationPageService.registration();
+        User user = EntitiesFactory.getUser();
+        registrationPageService.registration(URL_REGISTRATION_PAGE, REGISTRATION_FIRST_NAME, REGISTRATION_LAST_NAME,user.getEmail(), user.getPassword(), user.getPassword());
         String actualTextOfNewRegistrationPage = registrationPageService.getTextErrorMessage();
         String expectedPageTexts = "Error: There is already a user account associated with this Email Address. Please retrieve your password or create an account with a different address.";
-        Assert.assertEquals(actualTextOfNewRegistrationPage, expectedPageTexts, "The actual text of the page does not expected!");
+        Assert.assertEquals(actualTextOfNewRegistrationPage, expectedPageTexts, "User registered with the same email");
     }
 
 }

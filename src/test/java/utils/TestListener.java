@@ -11,10 +11,10 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import pages.BasePage;
 
 
-
-public class TestListener implements ITestListener {
+public class TestListener extends BasePage implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult iTestResult) {

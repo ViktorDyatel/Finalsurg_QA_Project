@@ -1,7 +1,23 @@
 package utils;
-//url
-public class StringConstants {
-   public static final String URL_LOGIN_PAGE = "https://log.finalsurge.com/";
-    //public static final String URL_REGISTRATION_PAGE = "https://log.finalsurge.com/register.cshtml?page_redirect=%2f";
 
+public class StringConstants {
+
+
+    public static final String URL_LOGIN_PAGE = "https://log.finalsurge.com/";
+
+    public static final String DATE_WORKOUT = "6/5/2022";
+
+    public static final String DATE_STARTING_PRINT_WORKOUT = "6/4/2022";
+
+    public static final String DATE_ENDING_PRINT_WORKOUT = "6/12/2022";
+
+    public static final String XPATH_DATA_DAY = "//td[@data-day='%s']";
+
+    public static final String ACTIVITY_TYPE_SELECT = "    -Run: Hills";
+
+    public static final String ACTIVITY_TYPE = "Run - Hills";
+
+    public static final String WORKOUT_CREATION_DATE = "5";
 }
+
+

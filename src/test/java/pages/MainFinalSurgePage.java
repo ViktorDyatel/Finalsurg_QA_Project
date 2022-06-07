@@ -148,14 +148,14 @@ public class MainFinalSurgePage extends BasePage {
     public void transitionToANewTab() {
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
-        logger.atInfo().log("Переход на новую вкладку");
+        logger.atInfo().log("Switching to a new tab");
     }
 
     @Step("Click printButton Save Print Button")
     public MainFinalSurgePage transitionToAOldTab() {
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(0));
-        logger.atInfo().log("Переход на старую вкладку");
+        logger.atInfo().log("Switching to a old tab");
         return this;
     }
 

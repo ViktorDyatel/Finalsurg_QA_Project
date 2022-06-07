@@ -33,10 +33,9 @@ public class MainFinalSurgePage extends BasePage {
     @FindBy(xpath = "//input[@id='saveButton']")
     private WebElement saveButton;
 
-    @FindBy(xpath = "//*[@id=\"workout-add\"]/div[1]/strong")
-     private WebElement errorWhileCreateWorkout;
-    //@FindBy(xpath = "//div[@class=\"alert alert-error\"]")
-   // private WebElement errorWhileCreateWorkout;
+
+    @FindBy(xpath = "//div[@class='alert alert-error']/strong")
+   private WebElement errorWhileCreateWorkout;
 
     @FindBy(xpath = "//i[@class='icsw16-printer']")
     private WebElement printButton;

@@ -38,11 +38,8 @@ public class CreateWorkoutTest extends BaseTest {
         mainFinalSurgePageService.addWorkoutWithoutActivityType(DATE_WORKOUT);
         String actualTextOfWidgetContent = mainFinalSurgePageService.getTextOfErrorWhileCreateWorkout();
         System.out.println(actualTextOfWidgetContent);
-        String expectedPageTexts = "×\n" +
-                "Please fix the following errors:\n" +
-                "*Please select a valid Activity Type.";
+        String expectedPageTexts = "Please fix the following errors:";
         Assert.assertEquals(actualTextOfWidgetContent, expectedPageTexts, "This workout was created without an active type");
     }
 }
-
 

@@ -41,7 +41,7 @@ public class CreateWorkoutTest extends BaseTest {
         String expectedPageTexts = "×\n" +
                 "Please fix the following errors:\n" +
                 "*Please select a valid Activity Type.";
-        Assert.assertEquals(actualTextOfWidgetContent, expectedPageTexts, "This workout was not created because no active type was selected ");
+        Assert.assertEquals(actualTextOfWidgetContent, expectedPageTexts, "This workout was created without an active type");
     }
 }
 

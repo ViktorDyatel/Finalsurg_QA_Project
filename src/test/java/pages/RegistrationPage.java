@@ -36,52 +36,55 @@ public class RegistrationPage extends BasePage {
         return alertError.getText();
     }
 
-
     @Step("Opening Registration Page")
     public RegistrationPage openRegistrationPage(String urlForRegistration) {
-        driver.get(urlForRegistration);
         logger.atInfo().log("Passing url and opening registration page");
+        driver.get(urlForRegistration);
+
         return this;
     }
 
     @Step("Fill in the first name")
     public RegistrationPage fillInFirstName(String keyFirstName) {
+        logger.atInfo().log("User firstname input");
         waitVisibilityOf(firstName).clear();
         firstName.sendKeys(keyFirstName);
-        logger.atInfo().log("User firstname input");
+
         return this;
     }
 
     @Step("Fill in the last name")
     public RegistrationPage fillInLastName(String keyLastName) {
+        logger.atInfo().log("User lastname input");
         lastName.clear();
         lastName.sendKeys(keyLastName);
-        logger.atInfo().log("User lastname input");
 
         return this;
     }
 
     @Step("Fill email")
     public RegistrationPage fillInEmailRegistration(String keyEmail) {
+        logger.atInfo().log("User email input");
         emailAddress.clear();
         emailAddress.sendKeys(keyEmail);
-        logger.atInfo().log("User email input");
+
         return this;
     }
 
     @Step("Fill password Field")
     public RegistrationPage fillInPassword(String keyPassword) {
+        logger.atInfo().log("User password input");
         passwordAtRegistration.clear();
         passwordAtRegistration.sendKeys(keyPassword);
-        logger.atInfo().log("User password input");
+
         return this;
     }
 
     @Step("Fill password Field")
     public RegistrationPage fillInRetypePassword(String keyPassword) {
+        logger.atInfo().log("User password re-entry");
         reTypePasswordAtRegistration.clear();
         reTypePasswordAtRegistration.sendKeys(keyPassword);
-        logger.atInfo().log("User password re-entry");
 
         return this;
     }
@@ -89,9 +92,8 @@ public class RegistrationPage extends BasePage {
 
     @Step("Click Create New Account ")
     public void clickCreateNewAccountButton() {
-
-        waitElementToBeClickable(createNewAccountButton).click();
         logger.atInfo().log("Pressing the create new account after filling in all fields");
+        waitElementToBeClickable(createNewAccountButton).click();
     }
 
 }

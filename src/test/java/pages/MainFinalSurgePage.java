@@ -1,6 +1,5 @@
 package pages;
 
-
 import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,9 +9,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
-
-
-import java.util.ArrayList;
+import utils.ClickJSExecutor;
 
 import static utils.StringConstants.*;
 
@@ -20,6 +17,11 @@ public class MainFinalSurgePage extends BasePage {
 
     private static final Logger logger = LogManager.getLogger(MainFinalSurgePage.class);
 
+    public static final String XPATH_DATA_DAY = "//td[@data-day='%s']";
+
+    public static final String SELECT = "ActivityType";
+
+    private final ClickJSExecutor clickJSExecutor = new ClickJSExecutor();
 
     @FindBy(xpath = "//button[@class='btn btn-small btn-info ptip_s']")
     private WebElement buttonViewCalendarOfMainFinalSurgePage;
@@ -33,9 +35,8 @@ public class MainFinalSurgePage extends BasePage {
     @FindBy(xpath = "//input[@id='saveButton']")
     private WebElement saveButton;
 
-
     @FindBy(xpath = "//div[@class='alert alert-error']/strong")
-   private WebElement errorWhileCreateWorkout;
+    private WebElement errorWhileCreateWorkout;
 
     @FindBy(xpath = "//i[@class='icsw16-printer']")
     private WebElement printButton;
@@ -70,112 +71,107 @@ public class MainFinalSurgePage extends BasePage {
     @FindBy(xpath = "//a[@class='close-reveal-modal']")
     private WebElement closePrintWorkout;
 
+    @FindBy(xpath = "//a[contains(text(),'Gear & Routes')]")
+    private WebElement GearRoutesButton;
 
-    @Step("Click close print workout ")
-    public void clickClosePrintWorkoutButton() {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].click();", closePrintWorkout);
+    @FindBy(xpath = "//strong/a[contains(text(),'Shoes')]")
+    private WebElement shoesButton;
 
-           }
+    @Step("Click shoes button")
+    public void clickShoesButton() {
+        logger.atInfo().log("Pressing the shoes button");
+        waitElementToBeClickable(shoesButton).click();
+    }
+
+    @Step("Click GearRoutes button")
+    public void clickGearRoutes() {
+        logger.atInfo().log("Pressing the GearRoutes button");
+        waitElementToBeClickable(GearRoutesButton).click();
+    }
 
 
     @Step("Click mailbox ")
     public void clickMailbox() {
-
-        waitElementToBeClickable(mailbox).click();
         logger.atInfo().log("Pressing the mailbox");
+        waitElementToBeClickable(mailbox).click();
     }
 
 
     @Step("Click Workout Report ")
     public void clickWorkoutReport() {
-
-        waitElementToBeClickable(workoutReport).click();
         logger.atInfo().log("Pressing the Workout Report");
+        waitElementToBeClickable(workoutReport).click();
     }
 
     @Step("Click calendar Button")
     public void clickCalendarButton() {
-        waitElementToBeClickable(calendarButton).click();
         logger.atInfo().log("Clicking the calendar button");
-
+        waitElementToBeClickable(calendarButton).click();
     }
 
 
     @Step("Click event activity")
     public MainFinalSurgePage clickEventActivity() {
-        waitElementToBeClickable(eventActivity).click();
         logger.atInfo().log("Clicking the Event Activity");
+        waitElementToBeClickable(eventActivity).click();
+
         return this;
     }
 
     @Step("Click delete activity Button")
     public MainFinalSurgePage clickDeleteActivityButton() {
-        waitElementToBeClickable(deleteActivityButton).click();
         logger.atInfo().log("Clicking Delete Activity Button");
+        waitElementToBeClickable(deleteActivityButton).click();
+
         return this;
     }
 
     @Step("Click OK Button")
     public MainFinalSurgePage clickOkButton() {
-        waitElementToBeClickable(okButton).click();
         logger.atInfo().log("Clicking the OK button");
+        waitElementToBeClickable(okButton).click();
+
         return this;
     }
 
     @Step("Entrance to iFrame")
     public MainFinalSurgePage entranceIFrame() {
-        driver.switchTo().frame("PrintWorkoutsiFrame");
         logger.atInfo().log("Entrance to iFrame");
+        driver.switchTo().frame("PrintWorkoutsiFrame");
+
         return this;
     }
 
     @Step("exit from iFrame")
     public MainFinalSurgePage exitFromIFrame() {
-        driver.switchTo().defaultContent();
         logger.atInfo().log("exit from iFrame");
-        return this;
+        driver.switchTo().defaultContent();
 
+        return this;
     }
 
     @Step("Click printButton Save Print Button")
     public MainFinalSurgePage clickSavePrintButton() {
-        waitElementToBeClickable(savePrintButton).click();
         logger.atInfo().log("Clicking the Save Print Button");
+        waitElementToBeClickable(savePrintButton).click();
+
         return this;
     }
-
-    @Step("Click printButton Save Print Button")
-    public void transitionToANewTab() {
-        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
-        driver.switchTo().window(tabs2.get(1));
-        logger.atInfo().log("Switching to a new tab");
-    }
-
-    @Step("Click printButton Save Print Button")
-    public MainFinalSurgePage transitionToAOldTab() {
-        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
-        driver.switchTo().window(tabs2.get(0));
-        logger.atInfo().log("Switching to a old tab");
-        return this;
-    }
-
 
     @Step("Fill in the Print Starting Date")
     public MainFinalSurgePage fillInPrintStartingDate(String keyPrintStartingDate) {
+        logger.atInfo().log("Entering the Print Start Date");
         waitVisibilityOf(printStartDate).clear();
         printStartDate.sendKeys(keyPrintStartingDate);
-        logger.atInfo().log("Entering the Print Start Date");
 
         return this;
     }
 
     @Step("Fill in the Print Ending Date")
     public MainFinalSurgePage fillInPrintEndingDate(String keyPrintEndingDate) {
-
+        logger.atInfo().log("Entering the Print End Date");
         waitVisibilityOf(printEndDate).clear();
         printEndDate.sendKeys(keyPrintEndingDate);
-        logger.atInfo().log("Entering the Print End Date");
 
         return this;
     }
@@ -183,50 +179,59 @@ public class MainFinalSurgePage extends BasePage {
 
     @Step("Click printButton")
     public MainFinalSurgePage clickPrintButton() {
-        waitElementToBeClickable(printButton).click();
         logger.atInfo().log("Clicking the Print Button");
+        waitElementToBeClickable(printButton).click();
+
         return this;
     }
 
     @Step("Click button View Calendar")
     public MainFinalSurgePage clickViewCalendarButton() {
-        waitElementToBeClickable(buttonViewCalendarOfMainFinalSurgePage).click();
         logger.atInfo().log("Clicking the View calendar button");
+        waitElementToBeClickable(buttonViewCalendarOfMainFinalSurgePage).click();
+
         return this;
     }
 
 
     @Step("Click button Quick add Button")
     public MainFinalSurgePage clickButtonQuickAdd() {
-        waitElementToBeClickable(buttonQuickAddToggle).click();
         logger.atInfo().log("Clicking the Quick add button");
+        waitElementToBeClickable(buttonQuickAddToggle).click();
+
         return this;
     }
 
 
     @Step("Fill in the training date")
     public MainFinalSurgePage fillInDate(String keyDate) {
+        logger.atInfo().log("Entering the training date");
         waitVisibilityOf(workoutDate).clear();
         workoutDate.sendKeys(keyDate);
-        logger.atInfo().log("Entering the training date");
+
         return this;
     }
 
 
     @Step("Select Workout Options")
     public MainFinalSurgePage chooseTheTypeOfTraining(String option) {
-        Select activityType = new Select(driver.findElement(By.id("ActivityType")));
-        activityType.selectByVisibleText(option);
         logger.atInfo().log("Selecting an activity type");
+        Select activityType = new Select(driver.findElement(By.id(SELECT)));
+        activityType.selectByVisibleText(option);
+
         return this;
     }
 
     @Step("Click button Save Button")
     public void clickSaveButton() {
-
-        saveButton.click();
         logger.atInfo().log("Clicking the Save Button");
+        saveButton.click();
+    }
 
+
+    @Step("Click close print workout ")
+    public void clickClosePrintWorkoutButton() {
+        clickJSExecutor.clickClosePrintWorkoutButton(closePrintWorkout);
     }
 
 

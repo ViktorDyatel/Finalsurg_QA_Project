@@ -2,6 +2,7 @@ package tests;
 
 import io.qameta.allure.Description;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import services.MainFinalSurgePageService;
@@ -10,10 +11,9 @@ import static utils.StringConstants.*;
 
 public class DeleteWorkoutTest extends BaseTest {
 
-
     private MainFinalSurgePageService mainFinalSurgePageService;
 
-    @BeforeMethod
+    @BeforeClass
     public void setUp() {
 
         mainFinalSurgePageService = new MainFinalSurgePageService();
@@ -25,8 +25,6 @@ public class DeleteWorkoutTest extends BaseTest {
         mainFinalSurgePageService.addWorkout(DATE_WORKOUT, ACTIVITY_TYPE_SELECT);
         mainFinalSurgePageService.deleteWorkoutPlan();
         boolean isWorkoutCreated = mainFinalSurgePageService.thisWorkoutWasCreated();
-        System.out.println(isWorkoutCreated);
         Assert.assertFalse(isWorkoutCreated, "This account has not been deleted.");
-
     }
 }

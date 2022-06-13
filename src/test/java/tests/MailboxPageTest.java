@@ -4,6 +4,7 @@ import entities.EntitiesFactory;
 import io.qameta.allure.Description;
 import models.User;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import services.LoginPageService;
@@ -11,12 +12,13 @@ import services.MainFinalSurgePageService;
 
 import static utils.StringConstants.URL_LOGIN_PAGE;
 
-public class MailboxPageTest extends BaseTest{
+public class MailboxPageTest extends BaseTest {
 
     private MainFinalSurgePageService mainFinalSurgePageService;
+
     private LoginPageService loginPageService;
 
-    @BeforeTest
+    @BeforeClass
     public void setUp() {
 
         mainFinalSurgePageService = new MainFinalSurgePageService();
@@ -24,10 +26,9 @@ public class MailboxPageTest extends BaseTest{
 
     }
 
-
     @Test(description = "MailboxPageTest")
     @Description("Logging in and going to the mailbox page")
-    public void mailboxPageTest(){
+    public void mailboxPageTest() {
         User user = EntitiesFactory.getUser();
         loginPageService.login(user.getEmail(), user.getPassword(), URL_LOGIN_PAGE);
         mainFinalSurgePageService.openMailboxPage();

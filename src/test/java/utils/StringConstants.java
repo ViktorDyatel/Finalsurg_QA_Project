@@ -11,8 +11,6 @@ public class StringConstants {
 
     public static final String DATE_ENDING_PRINT_WORKOUT = "6/12/2022";
 
-    public static final String XPATH_DATA_DAY = "//td[@data-day='%s']";
-
     public static final String ACTIVITY_TYPE_SELECT = "    -Run: Hills";
 
     public static final String ACTIVITY_TYPE = "Run - Hills";

@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-
 public abstract class BasePage {
 
     protected WebDriver driver = DriverSingleton.getInstance().getDriver();
@@ -17,7 +16,6 @@ public abstract class BasePage {
     private final static int WAIT_TIMEOUT_SECONDS = 10;
 
     public BasePage() {
-
         PageFactory.initElements(driver, this);
     }
 

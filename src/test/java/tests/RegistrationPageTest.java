@@ -9,14 +9,17 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import services.RegistrationPageService;
 
-public class RegistrationPageTest extends BaseTest{
+import static services.RegistrationPageService.URL_REGISTRATION_PAGE;
 
-    public static final String URL_REGISTRATION_PAGE = "https://log.finalsurge.com/register.cshtml?page_redirect=%2f";
+public class RegistrationPageTest extends BaseTest {
+
     public static final String REGISTRATION_FIRST_NAME = "Viktor";
+
     public static final String REGISTRATION_LAST_NAME = "Dyatel";
+
     private RegistrationPageService registrationPageService;
 
-    @BeforeTest
+    @BeforeClass
     public void setUp() {
 
         registrationPageService = new RegistrationPageService();
@@ -24,9 +27,9 @@ public class RegistrationPageTest extends BaseTest{
 
     @Test(description = "RegistrationPageTest")
     @Description("Filling in all fields and pressing the register button")
-    public void registrationTest(){
+    public void registrationTest() {
         User user = EntitiesFactory.getUser();
-        registrationPageService.registration(URL_REGISTRATION_PAGE, REGISTRATION_FIRST_NAME, REGISTRATION_LAST_NAME,user.getEmail(), user.getPassword(), user.getPassword());
+        registrationPageService.registration(URL_REGISTRATION_PAGE, REGISTRATION_FIRST_NAME, REGISTRATION_LAST_NAME, user.getEmail(), user.getPassword(), user.getPassword());
         String actualTextOfNewRegistrationPage = registrationPageService.getTextErrorMessage();
         String expectedPageTexts = "Error: There is already a user account associated with this Email Address. Please retrieve your password or create an account with a different address.";
         Assert.assertEquals(actualTextOfNewRegistrationPage, expectedPageTexts, "User registered with the same email");

@@ -10,7 +10,6 @@ public class PrintPage extends BasePage {
 
     public String getTextDateOfReportGeneration() {
         waitVisibilityOf(printButton);
-
         return printButton.getText();
     }
 

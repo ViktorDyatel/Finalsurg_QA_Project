@@ -32,7 +32,6 @@ public class RegistrationPage extends BasePage {
     private WebElement alertError;
 
     public String getTextErrorMessage() {
-
         return alertError.getText();
     }
 
@@ -40,7 +39,6 @@ public class RegistrationPage extends BasePage {
     public RegistrationPage openRegistrationPage(String urlForRegistration) {
         logger.atInfo().log("Passing url and opening registration page");
         driver.get(urlForRegistration);
-
         return this;
     }
 
@@ -49,7 +47,6 @@ public class RegistrationPage extends BasePage {
         logger.atInfo().log("User firstname input");
         waitVisibilityOf(firstName).clear();
         firstName.sendKeys(keyFirstName);
-
         return this;
     }
 
@@ -58,7 +55,6 @@ public class RegistrationPage extends BasePage {
         logger.atInfo().log("User lastname input");
         lastName.clear();
         lastName.sendKeys(keyLastName);
-
         return this;
     }
 
@@ -67,7 +63,6 @@ public class RegistrationPage extends BasePage {
         logger.atInfo().log("User email input");
         emailAddress.clear();
         emailAddress.sendKeys(keyEmail);
-
         return this;
     }
 
@@ -76,7 +71,6 @@ public class RegistrationPage extends BasePage {
         logger.atInfo().log("User password input");
         passwordAtRegistration.clear();
         passwordAtRegistration.sendKeys(keyPassword);
-
         return this;
     }
 
@@ -85,10 +79,8 @@ public class RegistrationPage extends BasePage {
         logger.atInfo().log("User password re-entry");
         reTypePasswordAtRegistration.clear();
         reTypePasswordAtRegistration.sendKeys(keyPassword);
-
         return this;
     }
-
 
     @Step("Click Create New Account ")
     public void clickCreateNewAccountButton() {

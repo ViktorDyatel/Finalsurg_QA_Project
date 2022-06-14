@@ -3,8 +3,6 @@ package utils;
 public class StringConstants {
 
 
-    public static final String URL_LOGIN_PAGE = "https://log.finalsurge.com/";
-
     public static final String DATE_WORKOUT = "6/5/2022";
 
     public static final String DATE_STARTING_PRINT_WORKOUT = "6/4/2022";

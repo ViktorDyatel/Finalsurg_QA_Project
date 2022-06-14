@@ -1,13 +1,16 @@
 package tests;
 
+import entities.EntitiesFactory;
 import io.qameta.allure.Description;
+import models.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import services.LoginPageService;
 import services.MainFinalSurgePageService;
 
-import static utils.StringConstants.*;
+import static utils.StringConstants.ACTIVITY_TYPE_SELECT;
+import static utils.StringConstants.DATE_WORKOUT;
 
 public class DeleteWorkoutTest extends BaseTest {
 
@@ -15,8 +18,10 @@ public class DeleteWorkoutTest extends BaseTest {
 
     @BeforeClass
     public void setUp() {
-
         mainFinalSurgePageService = new MainFinalSurgePageService();
+        LoginPageService loginPageService = new LoginPageService();
+        User user = EntitiesFactory.getUser();
+        loginPageService.login(user.getEmail(), user.getPassword());
     }
 
     @Test(description = "DeleteWorkoutTest")

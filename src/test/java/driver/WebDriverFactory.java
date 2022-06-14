@@ -7,14 +7,13 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-
 public class WebDriverFactory {
 
     public WebDriverFactory() {
     }
 
     public static WebDriver getWebDriver() {
-        WebDriver driver = null;
+        WebDriver driver;
         switch (System.getProperty("browser")) {
             case "firefox": {
                 WebDriverManager.firefoxdriver().setup();
@@ -26,7 +25,6 @@ public class WebDriverFactory {
                 driver = new EdgeDriver();
                 break;
             }
-
             default: {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();

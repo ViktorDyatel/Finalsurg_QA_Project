@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class Tabs extends BasePage {
 
     private static final Logger logger = LogManager.getLogger(Tabs.class);
+
     @Step("Click printButton Save Print Button")
     public void transitionToANewTab(int numberTab) {
         logger.atInfo().log("Switching to a new tab");

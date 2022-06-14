@@ -32,7 +32,6 @@ public class LoginPage extends BasePage {
     public LoginPage openPage(String url) {
         logger.atInfo().log("Passing url and opening login page");
         driver.get(url);
-
         return this;
     }
 
@@ -41,7 +40,6 @@ public class LoginPage extends BasePage {
         logger.atInfo().log("User email input");
         waitVisibilityOf(email).clear();
         email.sendKeys(keyEmail);
-
         return this;
     }
 
@@ -50,7 +48,6 @@ public class LoginPage extends BasePage {
         logger.atInfo().log("User password input");
         password.clear();
         password.sendKeys(keyPassword);
-
         return this;
     }
 

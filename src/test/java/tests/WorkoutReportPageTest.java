@@ -5,12 +5,10 @@ import io.qameta.allure.Description;
 import models.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import services.LoginPageService;
 import services.MainFinalSurgePageService;
 
-import static utils.StringConstants.URL_LOGIN_PAGE;
 
 public class WorkoutReportPageTest extends BaseTest {
 
@@ -20,7 +18,6 @@ public class WorkoutReportPageTest extends BaseTest {
 
     @BeforeClass
     public void setUp() {
-
         mainFinalSurgePageService = new MainFinalSurgePageService();
         loginPageService = new LoginPageService();
     }
@@ -29,7 +26,7 @@ public class WorkoutReportPageTest extends BaseTest {
     @Description("Logging in and going to the workoutReport page")
     public void workoutReportPageTest() {
         User user = EntitiesFactory.getUser();
-        loginPageService.login(user.getEmail(), user.getPassword(), URL_LOGIN_PAGE);
+        loginPageService.login(user.getEmail(), user.getPassword());
         mainFinalSurgePageService.openWorkoutReport();
         String actualTextOfWidgetContent = driver.getCurrentUrl();
         String expectedPageTexts = "https://log.finalsurge.com/WorkoutReport.cshtml";

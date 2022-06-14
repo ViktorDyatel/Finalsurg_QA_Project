@@ -5,7 +5,6 @@ import io.qameta.allure.Description;
 import models.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import services.RegistrationPageService;
 
@@ -21,7 +20,6 @@ public class RegistrationPageTest extends BaseTest {
 
     @BeforeClass
     public void setUp() {
-
         registrationPageService = new RegistrationPageService();
     }
 

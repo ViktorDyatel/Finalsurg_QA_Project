@@ -2,7 +2,6 @@ package driver;
 
 import org.openqa.selenium.WebDriver;
 
-
 public class DriverSingleton {
 
     private final static ThreadLocal<DriverSingleton> instance = new ThreadLocal<>();
@@ -33,4 +32,5 @@ public class DriverSingleton {
         }
     }
 }
+
 

@@ -2,18 +2,16 @@ package utils;
 
 import driver.DriverSingleton;
 import io.qameta.allure.Attachment;
-
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import pages.BasePage;
+
+import java.util.concurrent.TimeUnit;
 
 
-public class TestListener extends BasePage implements ITestListener {
+public class TestListener implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult iTestResult) {

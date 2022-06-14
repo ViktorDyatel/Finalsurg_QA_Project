@@ -8,14 +8,14 @@ public class LoginPageService {
 
     protected LoginPage loginPage = new LoginPage();
 
+    protected static final String URL_LOGIN_PAGE = "https://log.finalsurge.com/";
+
     @Step("Opening login page and fill all fields, after that click button login")
-    public MainFinalSurgePage login(String email, String password, String url) {
-        loginPage
-                .openPage(url)
+    public MainFinalSurgePage login(String email, String password) {
+        loginPage.openPage(URL_LOGIN_PAGE)
                 .fillInEmail(email)
                 .fillInPassword(password)
                 .clickLoginButton();
-
         return new MainFinalSurgePage();
     }
 
@@ -23,6 +23,5 @@ public class LoginPageService {
 
         return loginPage.getErrorTextOfLoginPage();
     }
-
 
 }

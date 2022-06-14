@@ -25,7 +25,6 @@ public class RegistrationPageService {
     }
 
     public String getTextErrorMessage() {
-
         return registrationPage.getTextErrorMessage();
     }
 }

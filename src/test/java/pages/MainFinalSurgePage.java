@@ -4,14 +4,14 @@ import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import utils.ClickJSExecutor;
 
-import static utils.StringConstants.*;
+import static utils.StringConstants.ACTIVITY_TYPE;
+import static utils.StringConstants.WORKOUT_CREATION_DATE;
 
 public class MainFinalSurgePage extends BasePage {
 
@@ -77,25 +77,11 @@ public class MainFinalSurgePage extends BasePage {
     @FindBy(xpath = "//strong/a[contains(text(),'Shoes')]")
     private WebElement shoesButton;
 
-    @Step("Click shoes button")
-    public void clickShoesButton() {
-        logger.atInfo().log("Pressing the shoes button");
-        waitElementToBeClickable(shoesButton).click();
-    }
-
-    @Step("Click GearRoutes button")
-    public void clickGearRoutes() {
-        logger.atInfo().log("Pressing the GearRoutes button");
-        waitElementToBeClickable(GearRoutesButton).click();
-    }
-
-
     @Step("Click mailbox ")
     public void clickMailbox() {
         logger.atInfo().log("Pressing the mailbox");
         waitElementToBeClickable(mailbox).click();
     }
-
 
     @Step("Click Workout Report ")
     public void clickWorkoutReport() {
@@ -104,9 +90,10 @@ public class MainFinalSurgePage extends BasePage {
     }
 
     @Step("Click calendar Button")
-    public void clickCalendarButton() {
+    public MainFinalSurgePage clickCalendarButton() {
         logger.atInfo().log("Clicking the calendar button");
         waitElementToBeClickable(calendarButton).click();
+        return this;
     }
 
 
@@ -114,7 +101,6 @@ public class MainFinalSurgePage extends BasePage {
     public MainFinalSurgePage clickEventActivity() {
         logger.atInfo().log("Clicking the Event Activity");
         waitElementToBeClickable(eventActivity).click();
-
         return this;
     }
 
@@ -122,7 +108,6 @@ public class MainFinalSurgePage extends BasePage {
     public MainFinalSurgePage clickDeleteActivityButton() {
         logger.atInfo().log("Clicking Delete Activity Button");
         waitElementToBeClickable(deleteActivityButton).click();
-
         return this;
     }
 
@@ -130,7 +115,6 @@ public class MainFinalSurgePage extends BasePage {
     public MainFinalSurgePage clickOkButton() {
         logger.atInfo().log("Clicking the OK button");
         waitElementToBeClickable(okButton).click();
-
         return this;
     }
 
@@ -138,15 +122,6 @@ public class MainFinalSurgePage extends BasePage {
     public MainFinalSurgePage entranceIFrame() {
         logger.atInfo().log("Entrance to iFrame");
         driver.switchTo().frame("PrintWorkoutsiFrame");
-
-        return this;
-    }
-
-    @Step("exit from iFrame")
-    public MainFinalSurgePage exitFromIFrame() {
-        logger.atInfo().log("exit from iFrame");
-        driver.switchTo().defaultContent();
-
         return this;
     }
 
@@ -154,7 +129,6 @@ public class MainFinalSurgePage extends BasePage {
     public MainFinalSurgePage clickSavePrintButton() {
         logger.atInfo().log("Clicking the Save Print Button");
         waitElementToBeClickable(savePrintButton).click();
-
         return this;
     }
 
@@ -163,7 +137,6 @@ public class MainFinalSurgePage extends BasePage {
         logger.atInfo().log("Entering the Print Start Date");
         waitVisibilityOf(printStartDate).clear();
         printStartDate.sendKeys(keyPrintStartingDate);
-
         return this;
     }
 
@@ -172,16 +145,13 @@ public class MainFinalSurgePage extends BasePage {
         logger.atInfo().log("Entering the Print End Date");
         waitVisibilityOf(printEndDate).clear();
         printEndDate.sendKeys(keyPrintEndingDate);
-
         return this;
     }
-
 
     @Step("Click printButton")
     public MainFinalSurgePage clickPrintButton() {
         logger.atInfo().log("Clicking the Print Button");
         waitElementToBeClickable(printButton).click();
-
         return this;
     }
 
@@ -189,36 +159,29 @@ public class MainFinalSurgePage extends BasePage {
     public MainFinalSurgePage clickViewCalendarButton() {
         logger.atInfo().log("Clicking the View calendar button");
         waitElementToBeClickable(buttonViewCalendarOfMainFinalSurgePage).click();
-
         return this;
     }
-
 
     @Step("Click button Quick add Button")
     public MainFinalSurgePage clickButtonQuickAdd() {
         logger.atInfo().log("Clicking the Quick add button");
         waitElementToBeClickable(buttonQuickAddToggle).click();
-
         return this;
     }
-
 
     @Step("Fill in the training date")
     public MainFinalSurgePage fillInDate(String keyDate) {
         logger.atInfo().log("Entering the training date");
         waitVisibilityOf(workoutDate).clear();
         workoutDate.sendKeys(keyDate);
-
         return this;
     }
-
 
     @Step("Select Workout Options")
     public MainFinalSurgePage chooseTheTypeOfTraining(String option) {
         logger.atInfo().log("Selecting an activity type");
         Select activityType = new Select(driver.findElement(By.id(SELECT)));
         activityType.selectByVisibleText(option);
-
         return this;
     }
 
@@ -228,36 +191,26 @@ public class MainFinalSurgePage extends BasePage {
         saveButton.click();
     }
 
-
     @Step("Click close print workout ")
     public void clickClosePrintWorkoutButton() {
         clickJSExecutor.clickClosePrintWorkoutButton(closePrintWorkout);
     }
 
-
     public boolean isWorkoutWasCreated() {
         try {
-
             return driver.findElement(By.xpath(String.format(XPATH_DATA_DAY, WORKOUT_CREATION_DATE))).findElement(By.linkText(ACTIVITY_TYPE)).isDisplayed();
         } catch (NoSuchElementException e) {
-
             return false;
-
         }
-
     }
 
     public String getTextOfErrorWhileCreateWorkout() {
-
         return errorWhileCreateWorkout.getText();
     }
 
-
     public String getTextOfMainPageSection() {
-
         return buttonViewCalendarOfMainFinalSurgePage.getText();
     }
-
 
 }
 

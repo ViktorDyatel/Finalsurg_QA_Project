@@ -1,11 +1,9 @@
 package services;
-import entities.EntitiesFactory;
+
 import io.qameta.allure.Step;
-import models.User;
 import pages.MainFinalSurgePage;
 import pages.PrintPage;
 import utils.Tabs;
-import static utils.StringConstants.*;
 
 public class MainFinalSurgePageService extends LoginPageService {
 
@@ -31,10 +29,8 @@ public class MainFinalSurgePageService extends LoginPageService {
 
     @Step("Open the page and click add workout, fill in the date field, select the type of workout, and then click add workout.")
     public void addWorkout(String dateWorkout, String activityType) {
-        User user = EntitiesFactory.getUser();
-        login(user.getEmail(), user.getPassword(), URL_LOGIN_PAGE);
         mainFinalSurgePage
-                .clickViewCalendarButton()
+                .clickCalendarButton()
                 .clickButtonQuickAdd()
                 .fillInDate(dateWorkout)
                 .chooseTheTypeOfTraining(activityType)
@@ -44,15 +40,11 @@ public class MainFinalSurgePageService extends LoginPageService {
 
     @Step("Open the page and click add workout, fill in the date field, select the type of workout, and then click add workout.")
     public void addWorkoutWithoutActivityType(String dateWorkout) {
-        User user = EntitiesFactory.getUser();
-        login(user.getEmail(), user.getPassword(), URL_LOGIN_PAGE);
         mainFinalSurgePage
                 .clickViewCalendarButton()
                 .clickButtonQuickAdd()
                 .fillInDate(dateWorkout)
                 .clickSaveButton();
-
-
     }
 
     @Step("Open the page, click the print button, enter the print dates and click the print button")
@@ -83,20 +75,15 @@ public class MainFinalSurgePageService extends LoginPageService {
                 .clickCalendarButton();
     }
 
-
-
     public boolean thisWorkoutWasCreated() {
-
         return mainFinalSurgePage.isWorkoutWasCreated();
     }
 
     public String getTextOfErrorWhileCreateWorkout() {
-
         return mainFinalSurgePage.getTextOfErrorWhileCreateWorkout();
     }
 
     public String getTextDateOfReportGeneration() {
-
         return printPage.getTextDateOfReportGeneration();
     }
 

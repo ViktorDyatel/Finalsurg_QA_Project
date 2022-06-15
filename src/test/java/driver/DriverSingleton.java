@@ -9,6 +9,7 @@ public class DriverSingleton {
     private WebDriver driver;
 
     private DriverSingleton() {
+
         driver = WebDriverFactory.getWebDriver();
     }
 
@@ -20,6 +21,7 @@ public class DriverSingleton {
     }
 
     public WebDriver getDriver() {
+
         return driver;
     }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Main Suite">
+<suite name="Main Suite" parallel="tests" thread-count="2">
     <test name="LoginPageTest">
         <classes>
             <class name="tests.LoginPageTest"/>
@@ -13,30 +13,12 @@
             <class name="tests.RegistrationPageTest"/>
         </classes>
     </test>
+
     <test name="CreateWorkoutTest">
         <classes>
             <class name="tests.CreateWorkoutTest"/>
         </classes>
     </test>
-    <test name="DeleteWorkoutPlanTest">
-        <classes>
-            <class name="tests.DeleteWorkoutTest"/>
-        </classes>
-    </test>
-    <test name="WorkoutReportPageTest">
-        <classes>
-            <class name="tests.WorkoutReportPageTest"/>
-        </classes>
-    </test>
-    <test name="MailboxPageTest">
-        <classes>
-            <class name="tests.MailboxPageTest"/>
-        </classes>
-    </test>
-    <test name="PrintPageTest">
-        <classes>
-            <class name="tests.PrintPageTest"/>
-        </classes>
-    </test>
+
 
 </suite>

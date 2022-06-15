@@ -8,7 +8,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
-import utils.ClickJSExecutor;
+import utils.JSExecutor;
 
 import static utils.StringConstants.ACTIVITY_TYPE;
 import static utils.StringConstants.WORKOUT_CREATION_DATE;
@@ -21,7 +21,7 @@ public class MainFinalSurgePage extends BasePage {
 
     public static final String SELECT = "ActivityType";
 
-    private final ClickJSExecutor clickJSExecutor = new ClickJSExecutor();
+    private final JSExecutor JSExecutor = new JSExecutor();
 
     @FindBy(xpath = "//button[@class='btn btn-small btn-info ptip_s']")
     private WebElement buttonViewCalendarOfMainFinalSurgePage;
@@ -193,7 +193,7 @@ public class MainFinalSurgePage extends BasePage {
 
     @Step("Click close print workout ")
     public void clickClosePrintWorkoutButton() {
-        clickJSExecutor.clickClosePrintWorkoutButton(closePrintWorkout);
+        JSExecutor.clickButton(closePrintWorkout);
     }
 
     public boolean isWorkoutWasCreated() {

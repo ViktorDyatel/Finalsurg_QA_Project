@@ -24,6 +24,7 @@ public class MainFinalSurgePageService extends LoginPageService {
 
     @Step("Opening the login page, entering the login and password, pressing the formation of a report on training")
     public void openWorkoutReport() {
+
         mainFinalSurgePage.clickWorkoutReport();
     }
 
